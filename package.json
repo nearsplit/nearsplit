@@ -10,16 +10,16 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "eslint --fix \"**/*.{ts,tsx,md}\"",
+    "deploy:contract": "cd apps/contract && pnpm run deploy",
+    "build:contract": "cd apps/contract && pnpm build"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
-    "prettier": "latest",
     "turbo": "latest"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
   "packageManager": "pnpm@7.11.0"
 }
