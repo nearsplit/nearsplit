@@ -1,25 +1,25 @@
 {
   "name": "near-split",
-  "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "version": "0.1.0",
+  "private": false,
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
+    "test": "pnpm run build:contract && turbo run test",
     "format": "eslint --fix \"**/*.{ts,tsx,md}\"",
-    "deploy:contract": "cd apps/contract && pnpm run deploy",
-    "build:contract": "cd apps/contract && pnpm build"
+    "deploy:contract": "turbo run deploy --filter contract",
+    "build:contract": "turbo run build --filter contract"
   },
   "devDependencies": {
     "eslint-config-custom": "workspace:*",
     "turbo": "latest"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=16.0.0"
   },
-  "packageManager": "pnpm@7.11.0"
+  "packageManager": "pnpm@7.12.2",
+  "volta": {
+    "node": "16.17.1"
+  }
 }

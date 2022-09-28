@@ -2,7 +2,11 @@
   "extends": "tsconfig/base.json",
   "compilerOptions": {
     "experimentalDecorators": true,
-    "target": "es5",
-    "noEmit": true
+    "target": "ES2015",
+    "lib": [
+      "ES2020"
+    ],
+    "noEmit": true,
+    "moduleResolution": "node"
   }
 }

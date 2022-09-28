@@ -1,5 +1,5 @@
 {
-  "name": "near-split",
+  "name": "contract",
   "version": "1.0.0",
   "license": "(MIT AND Apache-2.0)",
   "type": "module",
@@ -9,10 +9,13 @@
     "test": "echo use integration-tests"
   },
   "dependencies": {
+    "big.js": "^6.2.1",
     "near-cli": "^3.4.0",
     "near-sdk-js": "0.5.0"
   },
   "devDependencies": {
+    "@types/big.js": "^6.1.6",
+    "tsconfig": "workspace:*",
     "typescript": "^4.7.4"
   }
 }
