@@ -1,9 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { getCoinPrice } from '../core/fetch/coinGecko';
+import { WalletSelectorContextProvider } from '../core/near/WalletSelectorContext';
+import Content from '../components/Content';
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const result = await getCoinPrice('near', 'eur');
 
   return {
@@ -13,7 +14,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Web({ price }) {
+export default function Web({ price }: { price: string }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -26,55 +27,10 @@ export default function Web({ price }) {
         <h1 className={styles.title}>
           Welcome to Near ({price})
         </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        <WalletSelectorContextProvider>
+          <Content />
+        </WalletSelectorContextProvider>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
     </div>
   );
 }

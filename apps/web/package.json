@@ -9,20 +9,30 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@near-wallet-selector/core": "^7.0.3",
+    "@near-wallet-selector/default-wallets": "^7.0.3",
+    "@near-wallet-selector/ledger": "^7.0.3",
+    "@near-wallet-selector/math-wallet": "^7.0.3",
+    "@near-wallet-selector/modal-ui": "^7.0.3",
+    "@near-wallet-selector/my-near-wallet": "^7.0.3",
+    "@near-wallet-selector/near-wallet": "^7.0.3",
+    "@near-wallet-selector/sender": "^7.0.3",
+    "near-api-js": "0.44.2",
     "next": "12.3.0",
-    "ohmyfetch": "^0.4.18",
+    "ohmyfetch": "^0.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "ui": "workspace:*"
+    "rxjs": "^7.5.7",
+    "ui": "workspace:0.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "eslint-config-custom": "workspace:*",
-    "eslint": "7.32.0",
-    "next-transpile-modules": "9.0.0",
-    "tsconfig": "workspace:*",
-    "@types/node": "^17.0.12",
+    "@babel/core": "^7.19.3",
+    "@types/node": "^17.0.45",
     "@types/react": "18.0.17",
-    "typescript": "^4.8.3"
+    "eslint": "7.32.0",
+    "eslint-config-custom": "workspace:0.0.0",
+    "next-transpile-modules": "9.0.0",
+    "tsconfig": "workspace:0.0.0",
+    "typescript": "^4.8.4"
   }
 }
