@@ -9,6 +9,7 @@ const bint150 = BigInt(150).toString(10);
 const testSplitAccountBob = 'testsplitbob.test';
 const testSplitAccountFob = 'testsplitfob.test';
 const testSplitAccountMob = 'testsplitmob.test';
+const testSplitAccountCob = 'testsplitcob.test';
 
 const test = anyTest as TestFn<{
   worker: Worker;
@@ -62,6 +63,21 @@ test('init the split', async (t) => {
   t.is(split.shares[testSplitAccountBob], bint50);
   t.is(split.shares[testSplitAccountFob], bint50);
   t.is(split.shares[testSplitAccountMob], bint50);
+});
+
+test('can\'t assign more shares than the total', async (t) => {
+  const { root, contract } = t.context.accounts;
+  const testSplit: SplitSerial = {
+    totalShares: bint150,
+    shares: {
+      [testSplitAccountBob]: bint50,
+      [testSplitAccountFob]: bint50,
+      [testSplitAccountMob]: bint50,
+      [testSplitAccountCob]: bint100,
+    },
+  };
+
+  await t.throwsAsync(root.call(contract, 'init', { split: testSplit }));
 });
 
 test('pay', async (t) => {

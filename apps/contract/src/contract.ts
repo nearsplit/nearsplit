@@ -30,6 +30,10 @@ export class SplitContract {
 
   @initialize({})
   init({ split }: { split: SplitSerial }): SplitSerial {
+    const sharesSum = Object.values(split.shares).reduce((sum, shares) => sum + BigInt(shares), BigInt('0'));
+    if (sharesSum > BigInt(split.totalShares)) {
+      return near.panicUtf8('Shares sum is over the amount of total shares!');
+    }
     this.totalShares = split.totalShares;
     this.shares.extend(Object.entries(split.shares));
 
